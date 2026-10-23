@@ -1,0 +1,1186 @@
+@font-face {
+  font-family: 'Retrograde-Regular';
+  src: url('./assets/Retrograde-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Retrograde-Regular', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.home-container {
+  width: 400px;
+  height: 400px;
+  background-image: url('./assets/background-blue.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.encouragement-text {
+  font-size: 1.25rem;
+  color: #b1cad8;
+  margin-bottom: 0.5rem;
+  animation: fadeIn 1s ease-in-out;
+  transition: opacity 0.8s ease;
+
+}
+
+.encouragement-text.hidden {
+  opacity: 0;
+}
+
+.background-green {
+  background-image: url('./assets/background-green.png');
+}
+
+.home-controls {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.image-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.image-button img {
+  width: 100px;
+}
+
+.home-timer {
+  font-size: 60px;
+  color: #d09caf;
+  margin: 0;
+}
+
+.gif-image {
+  height:100px;
+}
+
+.home-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.home-button img {
+  width: 60px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Add these rules to the bottom of your existing App.css */
+
+/* ── Window chrome (close + minimize) ───────────────────────── */
+.window-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  /* Allow dragging the window from the top bar area */
+  -webkit-app-region: no-drag;
+}
+
+.window-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 0;
+}
+
+.window-button img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.window-button:hover img {
+  opacity: 1;
+}
+
+/* ── Make the top bar draggable ──────────────────────────────── */
+.home-container {
+  -webkit-app-region: drag;
+}
+
+/* But interactive elements must opt out of drag */
+.home-controls,
+.image-button,
+.home-button,
+.window-button {
+  -webkit-app-region: no-drag;
+}
+
+/* Add these rules to the bottom of your existing App.css */
+
+/* ── Window chrome (close + minimize) ───────────────────────── */
+.window-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  /* Allow dragging the window from the top bar area */
+  -webkit-app-region: no-drag;
+}
+
+.window-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 0;
+}
+
+.window-button img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.window-button:hover img {
+  opacity: 1;
+}
+
+/* ── Make the top bar draggable ──────────────────────────────── */
+.home-container {
+  -webkit-app-region: drag;
+}
+
+/* But interactive elements must opt out of drag */
+.home-controls,
+.image-button,
+.home-button,
+.window-button {
+  -webkit-app-region: no-drag;
+}
+
+/* ── Session counter pill ──────────────────────────────────────────────────── */
+.session-counter {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  min-height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: transform 0.15s ease;
+}
+
+/* Tomatoes that haven't been earned yet — shown greyed out when count is 0 */
+.session-empty {
+  opacity: 0.25;
+  filter: grayscale(1);
+}
+
+/* Overflow count for power users with > 8 sessions */
+.session-overflow {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.75rem;
+  color: #d09caf;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* Pop animation — triggered for ~800 ms when a session completes */
+.session-counter--pop {
+  animation: session-pop 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes session-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* ── Gear / settings button (top-left) ─────────────────────────────────────── */
+.gear-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px;
+  opacity: 0.55;
+  color: #d09caf;
+  transition: opacity 0.15s, transform 0.3s ease;
+  -webkit-app-region: no-drag;
+  z-index: 10;
+}
+
+.gear-button:hover:not(:disabled) {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.gear-button:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* ── Settings panel backdrop ────────────────────────────────────────────────── */
+.sp-backdrop {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.25s ease;
+  z-index: 20;
+}
+
+.sp-backdrop--visible {
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+}
+
+/* ── Settings panel ─────────────────────────────────────────────────────────── */
+.sp-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background: rgba(28, 22, 34, 0.97);
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px 20px;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 30;
+  -webkit-app-region: no-drag;
+}
+
+.sp-panel--open {
+  transform: translateY(0);
+}
+
+/* ── Panel header ───────────────────────────────────────────────────────────── */
+.sp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 14px;
+}
+
+.sp-title {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.95rem;
+  color: #b1cad8;
+  letter-spacing: 0.06em;
+}
+
+.sp-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b1cad8;
+  font-size: 14px;
+  opacity: 0.6;
+  padding: 0;
+  line-height: 1;
+  transition: opacity 0.15s;
+}
+
+.sp-close-btn:hover { opacity: 1; }
+
+/* ── Stepper rows ───────────────────────────────────────────────────────────── */
+.sp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.sp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sp-label-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.sp-label {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.85rem;
+  color: #d09caf;
+  letter-spacing: 0.05em;
+}
+
+.sp-sublabel {
+  font-size: 0.7rem;
+  color: rgba(177, 202, 216, 0.5);
+  font-family: sans-serif;
+}
+
+.sp-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sp-step-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #b1cad8;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.12s, opacity 0.12s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.sp-step-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.14);
+}
+
+.sp-step-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.sp-step-input {
+  width: 40px;
+  text-align: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  color: #d09caf;
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.9rem;
+  padding: 4px 0;
+
+  /* Hide number input spinners */
+  -moz-appearance: textfield;
+}
+.sp-step-input::-webkit-outer-spin-button,
+.sp-step-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ── Footer buttons ─────────────────────────────────────────────────────────── */
+.sp-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.sp-btn {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 6px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.sp-btn:active { transform: scale(0.97); }
+
+.sp-btn--ghost {
+  background: rgba(255,255,255,0.06);
+  color: rgba(177, 202, 216, 0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.sp-btn--ghost:hover { opacity: 0.8; }
+
+.sp-btn--primary {
+  background: #d09caf;
+  color: #1c1622;
+  opacity: 0.7;
+}
+
+/* Lights up fully only when there's an unsaved change */
+.sp-btn--primary.sp-btn--dirty {
+  opacity: 1;
+}
+
+.sp-btn--primary:hover { opacity: 0.9; }
+
+/* ── Auto-switch toggle in settings panel ───────────────────────────────────── */
+.sp-toggle {
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sp-toggle--on {
+  background: #d09caf;
+}
+
+.sp-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.sp-toggle--on .sp-toggle-thumb {
+  transform: translateX(18px);
+}
+
+/* Add these rules to the bottom of your existing App.css */
+
+/* ── Window chrome (close + minimize) ───────────────────────── */
+.window-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  /* Allow dragging the window from the top bar area */
+  -webkit-app-region: no-drag;
+}
+
+.window-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 0;
+}
+
+.window-button img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.window-button:hover img {
+  opacity: 1;
+}
+
+/* ── Make the top bar draggable ──────────────────────────────── */
+.home-container {
+  -webkit-app-region: drag;
+}
+
+/* But interactive elements must opt out of drag */
+.home-controls,
+.image-button,
+.home-button,
+.window-button {
+  -webkit-app-region: no-drag;
+}
+
+/* ── Session counter pill ──────────────────────────────────────────────────── */
+.session-counter {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  min-height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: transform 0.15s ease;
+}
+
+/* Tomatoes that haven't been earned yet — shown greyed out when count is 0 */
+.session-empty {
+  opacity: 0.25;
+  filter: grayscale(1);
+}
+
+/* Overflow count for power users with > 8 sessions */
+.session-overflow {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.75rem;
+  color: #d09caf;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* Pop animation — triggered for ~800 ms when a session completes */
+.session-counter--pop {
+  animation: session-pop 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes session-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* ── Gear / settings button (top-left) ─────────────────────────────────────── */
+.gear-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px;
+  opacity: 0.55;
+  color: #d09caf;
+  transition: opacity 0.15s, transform 0.3s ease;
+  -webkit-app-region: no-drag;
+  z-index: 10;
+}
+
+.gear-button:hover:not(:disabled) {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.gear-button:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* ── Settings panel backdrop ────────────────────────────────────────────────── */
+.sp-backdrop {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.25s ease;
+  z-index: 20;
+}
+
+.sp-backdrop--visible {
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+}
+
+/* ── Settings panel ─────────────────────────────────────────────────────────── */
+.sp-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background: rgba(28, 22, 34, 0.97);
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px 20px;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 30;
+  -webkit-app-region: no-drag;
+}
+
+.sp-panel--open {
+  transform: translateY(0);
+}
+
+/* ── Panel header ───────────────────────────────────────────────────────────── */
+.sp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 14px;
+}
+
+.sp-title {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.95rem;
+  color: #b1cad8;
+  letter-spacing: 0.06em;
+}
+
+.sp-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b1cad8;
+  font-size: 14px;
+  opacity: 0.6;
+  padding: 0;
+  line-height: 1;
+  transition: opacity 0.15s;
+}
+
+.sp-close-btn:hover { opacity: 1; }
+
+/* ── Stepper rows ───────────────────────────────────────────────────────────── */
+.sp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.sp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sp-label-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.sp-label {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.85rem;
+  color: #d09caf;
+  letter-spacing: 0.05em;
+}
+
+.sp-sublabel {
+  font-size: 0.7rem;
+  color: rgba(177, 202, 216, 0.5);
+  font-family: sans-serif;
+}
+
+.sp-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sp-step-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #b1cad8;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.12s, opacity 0.12s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.sp-step-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.14);
+}
+
+.sp-step-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.sp-step-input {
+  width: 40px;
+  text-align: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  color: #d09caf;
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.9rem;
+  padding: 4px 0;
+
+  /* Hide number input spinners */
+  -moz-appearance: textfield;
+}
+.sp-step-input::-webkit-outer-spin-button,
+.sp-step-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ── Footer buttons ─────────────────────────────────────────────────────────── */
+.sp-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.sp-btn {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 6px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.sp-btn:active { transform: scale(0.97); }
+
+.sp-btn--ghost {
+  background: rgba(255,255,255,0.06);
+  color: rgba(177, 202, 216, 0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.sp-btn--ghost:hover { opacity: 0.8; }
+
+.sp-btn--primary {
+  background: #d09caf;
+  color: #1c1622;
+  opacity: 0.7;
+}
+
+/* Lights up fully only when there's an unsaved change */
+.sp-btn--primary.sp-btn--dirty {
+  opacity: 1;
+}
+
+.sp-btn--primary:hover { opacity: 0.9; }
+
+/* ── Auto-switch toggle in settings panel ───────────────────────────────────── */
+.sp-toggle {
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sp-toggle--on {
+  background: #d09caf;
+}
+
+.sp-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.sp-toggle--on .sp-toggle-thumb {
+  transform: translateX(18px);
+}
+
+/* Add these rules to the bottom of your existing App.css */
+
+/* ── Window chrome (close + minimize) ───────────────────────── */
+.window-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  /* Allow dragging the window from the top bar area */
+  -webkit-app-region: no-drag;
+}
+
+.window-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 0;
+}
+
+.window-button img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.window-button:hover img {
+  opacity: 1;
+}
+
+/* ── Make the top bar draggable ──────────────────────────────── */
+.home-container {
+  -webkit-app-region: drag;
+}
+
+/* But interactive elements must opt out of drag */
+.home-controls,
+.image-button,
+.home-button,
+.window-button {
+  -webkit-app-region: no-drag;
+}
+
+/* ── Session counter pill ──────────────────────────────────────────────────── */
+.session-counter {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  min-height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: transform 0.15s ease;
+}
+
+/* Tomatoes that haven't been earned yet — shown greyed out when count is 0 */
+.session-empty {
+  opacity: 0.25;
+  filter: grayscale(1);
+}
+
+/* Overflow count for power users with > 8 sessions */
+.session-overflow {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.75rem;
+  color: #d09caf;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* Pop animation — triggered for ~800 ms when a session completes */
+.session-counter--pop {
+  animation: session-pop 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes session-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* ── Gear / settings button (top-left) ─────────────────────────────────────── */
+.gear-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px;
+  opacity: 0.55;
+  color: #d09caf;
+  transition: opacity 0.15s, transform 0.3s ease;
+  -webkit-app-region: no-drag;
+  z-index: 10;
+}
+
+.gear-button:hover:not(:disabled) {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.gear-button:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* ── Settings panel backdrop ────────────────────────────────────────────────── */
+.sp-backdrop {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.25s ease;
+  z-index: 20;
+}
+
+.sp-backdrop--visible {
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+}
+
+/* ── Settings panel ─────────────────────────────────────────────────────────── */
+.sp-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background: rgba(28, 22, 34, 0.97);
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px 20px;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 30;
+  -webkit-app-region: no-drag;
+}
+
+.sp-panel--open {
+  transform: translateY(0);
+}
+
+/* ── Panel header ───────────────────────────────────────────────────────────── */
+.sp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 14px;
+}
+
+.sp-title {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.95rem;
+  color: #b1cad8;
+  letter-spacing: 0.06em;
+}
+
+.sp-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b1cad8;
+  font-size: 14px;
+  opacity: 0.6;
+  padding: 0;
+  line-height: 1;
+  transition: opacity 0.15s;
+}
+
+.sp-close-btn:hover { opacity: 1; }
+
+/* ── Stepper rows ───────────────────────────────────────────────────────────── */
+.sp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.sp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sp-label-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.sp-label {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.85rem;
+  color: #d09caf;
+  letter-spacing: 0.05em;
+}
+
+.sp-sublabel {
+  font-size: 0.7rem;
+  color: rgba(177, 202, 216, 0.5);
+  font-family: sans-serif;
+}
+
+.sp-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sp-step-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #b1cad8;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.12s, opacity 0.12s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.sp-step-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.14);
+}
+
+.sp-step-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.sp-step-input {
+  width: 40px;
+  text-align: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  color: #d09caf;
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.9rem;
+  padding: 4px 0;
+
+  /* Hide number input spinners */
+  -moz-appearance: textfield;
+}
+.sp-step-input::-webkit-outer-spin-button,
+.sp-step-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ── Footer buttons ─────────────────────────────────────────────────────────── */
+.sp-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.sp-btn {
+  font-family: 'Retrograde-Regular', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 6px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.sp-btn:active { transform: scale(0.97); }
+
+.sp-btn--ghost {
+  background: rgba(255,255,255,0.06);
+  color: rgba(177, 202, 216, 0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.sp-btn--ghost:hover { opacity: 0.8; }
+
+.sp-btn--primary {
+  background: #d09caf;
+  color: #1c1622;
+  opacity: 0.7;
+}
+
+/* Lights up fully only when there's an unsaved change */
+.sp-btn--primary.sp-btn--dirty {
+  opacity: 1;
+}
+
+.sp-btn--primary:hover { opacity: 0.9; }
+
+/* ── Auto-switch toggle in settings panel ───────────────────────────────────── */
+.sp-toggle {
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sp-toggle--on {
+  background: #d09caf;
+}
+
+.sp-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.sp-toggle--on .sp-toggle-thumb {
+  transform: translateX(18px);
+}
