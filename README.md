@@ -164,16 +164,13 @@ cute-pomodoro/
 ### Steps
  
 ```bash
-# Clone the repository
 git clone https://github.com/khuswant18/POMODORO.git
 cd POMODORO
  
-# Install dependencies
 npm install
  
-# Run in development (React dev server + Electron)
-npm run start          # terminal 1: starts React on :3000
-npm run electron       # terminal 2: launches Electron pointing at :3000
+npm run start          
+npm run electron       
 ```
  
 > Note: You need to start the React dev server before launching Electron in development mode, as `electron.js` loads `http://localhost:3000` when `app.isPackaged` is false.
